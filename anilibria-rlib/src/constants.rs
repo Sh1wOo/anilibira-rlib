@@ -1,0 +1,1 @@
+pub const GET_TITLE_URL: &str = "https://api.anilibria.tv/v3/title";
