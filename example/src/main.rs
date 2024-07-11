@@ -1,14 +1,16 @@
-use anilibria_rlib::title::functions;
+use anilibria_rlib::title::TitleService;
 use tokio::runtime::Runtime;
 
 fn main() {
     let rt = Runtime::new().unwrap();
+    let title_service = TitleService::new();
+
     rt.block_on(async {
         let queries = vec!["9000", "kimetsu-no-yaiba"];
 
         for query in queries {
             println!("Запрос для: {}", query);
-            match functions::get_title(query).await {
+            match title_service.get_title(query).await {
                 Ok(title_info) => {
                     println!("Успешно получены данные:");
                     println!("ID: {}", title_info.id);
